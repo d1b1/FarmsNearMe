@@ -24,13 +24,27 @@ module.exports = function(req, res) {
 	var query = ` {
 		${body.data.queryName}(_id: "${body.data.contentId}") {
 			_id
-			name
-			source
-			characteristics {
-				milk
-				texture
-				style
+			about
+			addPictures {
+				picturesOfFarm {
+					path
+					sourceUrl
+				}
 			}
+			address {
+				street
+				town
+				zipCode
+			}
+			farmName
+			hours
+			phoneNumber
+			preferences {
+				acceptedPayment
+				farmType
+				products
+			}
+			website
 		}
 	}`;
 

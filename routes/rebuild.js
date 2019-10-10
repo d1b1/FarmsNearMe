@@ -6,15 +6,15 @@ const titleCase = require('title-case')
 const algolia = require('../services/algolia');
 const takeshape = require('../services/takeshape')
 
-// Setup the index.
-const index = algolia.initIndex('cheese');
-
 module.exports = (req, res) => {
 
 	if (!req.query.contentType) {
 		res.status(200).send('Sorry you need to the the content type. ?contentType=cheese')
 		return
 	}
+
+	// Setup the index.
+	const index = algolia.initIndex(req.query.contentType);
 
 	// Set the query name.
 	var queryName = 'get' + titleCase(req.query.contentType) + 'List'
@@ -24,18 +24,27 @@ module.exports = (req, res) => {
 		${queryName} {
 			items {
 				_id
-				name
-				characteristics {
-					aged
-					covering
-					flavors
-					milk
-					rennetType
-					standardsAndProcessing
-					style
-					texture
-				}
-				description
+		    about
+		    addPictures {
+		      picturesOfFarm {
+		        path
+		        sourceUrl
+		      }
+		    }
+		    address {
+		      street
+		      town
+		      zipCode
+		    }
+		    farmName
+		    hours
+		    phoneNumber
+		    preferences {
+		      acceptedPayment
+		      farmType
+		      products
+		    }
+		    website
 			}
 		}
 	}
