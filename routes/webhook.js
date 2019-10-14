@@ -50,7 +50,7 @@ module.exports = function(req, res) {
 
 	takeshape(query).then(result => {
 
-		console.log(result);
+		console.log('result', result);
 
 		var obj = result.data[body.data.queryName];
 		obj.objectID = obj._id
