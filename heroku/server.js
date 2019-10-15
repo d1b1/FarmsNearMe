@@ -4,7 +4,6 @@ const _ = require('underscore')
 var bodyParser = require('body-parser')
 const PORT = process.env.PORT || 9001
 
-// parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
 
 // parse application/json
@@ -29,4 +28,5 @@ app.get('/rebuild', require('./routes/rebuild'))
 
 app.listen(PORT);
 
+console.log('Starting FarmsNearMe')
 console.log(`Listening on port ${PORT}...`);
