@@ -24,27 +24,51 @@ module.exports = (req, res) => {
 		${queryName} {
 			items {
 				_id
-		    about
-		    addPictures {
-		      picturesOfFarm {
-		        path
-		        sourceUrl
-		      }
-		    } 
-		    address {
-		      street
-		      town
-		      zipCode
-		    }
-		    farmName
-		    hours
-		    phoneNumber
-		    preferences {
-		      acceptedPayment
-		      farmType
-		      products
-		    }
-		    website
+			    about
+			    address {
+			      geoLocation {
+			        latitude
+			        longitude
+			      }
+			      street
+			      town
+			      zipCode
+			    }
+			    farmName
+			    farmPhotos {
+			      photo {
+			        _id
+			        caption
+			        credit
+			        description
+			        filename
+			        mimeType
+			        path
+			        sourceUrl
+			        title
+			        uploadStatus
+			      }
+			    }
+			    hours
+			    phoneNumber
+			    photoOrLogo {
+			      _id
+			      caption
+			      credit
+			      description
+			      filename
+			      mimeType
+			      path
+			      sourceUrl
+			      title
+			      uploadStatus
+			    }
+			    preferences {
+			      acceptedPayment
+			      farmType
+			      products
+			    }
+			    website
 			}
 		}
 	}
